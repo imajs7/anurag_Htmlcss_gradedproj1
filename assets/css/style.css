@@ -1,0 +1,500 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+}
+.error {
+  font-size: small;
+}
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+header {
+  height: 100px;
+  background-color: #666;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header h1 {
+  text-align: center;
+}
+
+nav {
+  background-color: #999;
+  min-height: 35px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navigation {
+  display: flex;
+}
+
+.navigation .navbar {
+  display: flex;
+}
+
+nav a {
+  padding: 8px 20px;
+  color: #f0f0f0;
+}
+
+.dropdown-menu:hover,
+nav a:hover {
+  background-color: #000;
+}
+
+.dropdown-menu {
+  height: 35px;
+}
+
+.dropdown-menu,
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-content {
+  z-index: 100;
+  background-color: #444;
+  visibility: hidden;
+}
+
+.dropdown-trigger:hover + .dropdown-content,
+.dropdown-content:hover {
+  visibility: visible;
+}
+
+/* Mobile menu */
+.mobile-menu-toggler {
+  display: none;
+  position: relative;
+  width: 100%;
+}
+.mobile-menu-toggler .menu-toggler {
+  opacity: 0;
+  position: relative;
+  height: 2.5rem;
+  aspect-ratio: 1;
+  top: 2px;
+  left: 0;
+  z-index: 30;
+  cursor: pointer;
+}
+.mobile-menu-toggler .hamburger {
+  position: absolute;
+  height: 2.5rem;
+  aspect-ratio: 1;
+  top: 2px;
+  left: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mobile-menu-toggler .hamburger div {
+  position: relative;
+  height: 4px;
+  width: 80%;
+  background-color: #f0f0f0;
+  transition: all 400ms ease;
+}
+.mobile-menu-toggler .hamburger div::before,
+.mobile-menu-toggler .hamburger div::after {
+  content: "";
+  position: absolute;
+  z-index: 20;
+  top: -10px;
+  width: 100%;
+  height: 4px;
+  background-color: #f0f0f0;
+}
+.mobile-menu-toggler .hamburger div::after {
+  top: 10px;
+}
+.mobile-menu-toggler .menu-toggler:checked + .hamburger div {
+  transform: rotate(135deg);
+}
+.mobile-menu-toggler .menu-toggler:checked + .hamburger div::before,
+.mobile-menu-toggler .menu-toggler:checked + .hamburger div::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+.mobile-menu-toggler .menu-toggler:checked:hover + .hamburger div {
+  transform: rotate(225deg);
+}
+
+.m-dropdown-menu:hover {
+  background-color: #000;
+}
+
+.m-dropdown-menu,
+.m-dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.m-dropdown-content {
+  z-index: 100;
+  background-color: #444;
+  display: none;
+}
+
+.m-dropdown-trigger:hover + .m-dropdown-content,
+.m-dropdown-content:hover {
+  display: flex;
+}
+
+/* Section */
+section {
+  margin: 20px 0;
+}
+
+/* Slider*/
+#slider {
+  position: relative;
+  height: 400px;
+}
+
+#slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #999;
+  border: 2px solid steelblue;
+  box-shadow: -3px -5px 8px rgb(0 0 0 / 0.1), 5px 8px 20px rgb(0 0 0 / 0.1);
+  overflow: hidden;
+
+  visibility: hidden;
+  animation: 20s animate-slide infinite;
+}
+
+#slider > *:nth-child(1) {
+  animation-delay: 0s;
+}
+#slider > *:nth-child(2) {
+  animation-delay: 4s;
+}
+#slider > *:nth-child(3) {
+  animation-delay: 8s;
+}
+#slider > *:nth-child(4) {
+  animation-delay: 12s;
+}
+#slider > *:nth-child(5) {
+  animation-delay: 16s;
+}
+
+#slider .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Grid */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.section-title {
+  margin: 50px 0;
+}
+
+.card {
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: -5px -5px 15px rgb(0 0 0 / 0.1), 5px 5px 15px rgb(0 0 0 / 0.1);
+}
+
+.card :is(p, button) {
+  margin: 10px 0;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background-color: #eee;
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+
+.card img:hover {
+  transform: scale(1.1);
+}
+
+.img-holder {
+  overflow: hidden;
+}
+
+.sale-price::before {
+  content: "Offer ";
+}
+
+.sale-price::after {
+  content: "/-";
+}
+
+.card button {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #eee;
+  color: #ffb200;
+  transition: all 300ms ease;
+  border-color: steelblue;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.card button:hover {
+  color: #000;
+}
+
+.card button:active {
+  background-color: rgb(250, 234, 230);
+  border-color: rgb(0, 255, 76);
+  color: #000;
+}
+
+/* copyright */
+.copyright {
+  color: #f0f0f0;
+  background-color: #000;
+  height: 45px;
+}
+.copyright p {
+  text-align: center;
+  line-height: 45px;
+}
+
+@keyframes animate-slide {
+  0% {
+    visibility: visible;
+  }
+  20% {
+    visibility: hidden;
+  }
+}
+
+/* lab test form page */
+#lab-form {
+  margin: 0;
+  height: 100vh;
+  position: relative;
+}
+
+#lab-form .form-holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  padding: 30px;
+}
+
+#lab-form .form-img {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+}
+
+#lab-form .form-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#lab-form .row {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+#lab-form .row .col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+}
+
+#lab-form
+  :is(input[type="text"], input[type="email"], input[type="number"], input[type="date"], input[type="time"], select) {
+  padding: 10px;
+}
+
+#lab-form :is(input[type="text"], input[type="email"], input[type="number"]) {
+  border: 0;
+  border-bottom: 1px solid #b4becb;
+}
+
+#lab-form
+  :is(input[type="text"], input[type="email"], input[type="number"]):focus {
+  outline: none;
+}
+
+#lab-form button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ab08ff;
+  color: #f0f0f0;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+#lab-form button:hover {
+  background-color: #461161;
+}
+
+#lab-form .checkbox-option label {
+  cursor: pointer;
+}
+
+/* scroll bar css */
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #999;
+}
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100vw;
+}
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(rgb(37, 100, 151), rgb(37, 100, 151));
+  border-radius: 100vw;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: steelblue;
+}
+@supports (scrollbar-color: rgb(37, 100, 151) rgb(37, 100, 151)) {
+  * {
+    scrollbar-color: rgb(37, 100, 151) rgb(37, 100, 151);
+    scrollbar-width: thin;
+  }
+}
+
+/* remove input spinner */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Media Query below tablet */
+@media (max-width: 860px) {
+  .navigation {
+    justify-content: center;
+  }
+
+  .navbar .dropdown-menu {
+    flex-direction: column;
+  }
+  .dropdown-content {
+    height: 0;
+  }
+
+  .dropdown-trigger:hover + .dropdown-content,
+  .dropdown-content:hover {
+    height: auto;
+  }
+
+  #slider {
+    margin-top: 10px;
+    height: 300px;
+  }
+
+  #slider .slide {
+    height: auto;
+  }
+
+  #slider .slide img {
+    object-fit: contain;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  section {
+    margin: 0 10px;
+  }
+
+  #lab-form {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  #lab-form :is(.form-holder, .form-img) {
+    position: relative;
+    width: 100%;
+  }
+  #lab-form .form-holder form .row {
+    flex-direction: column;
+  }
+
+  #lab-form .form-holder form .row .col {
+    width: 100%;
+  }
+}
+
+/* Media Query upto mobile */
+@media (max-width: 560px) {
+  .navigation .navbar {
+    display: none;
+  }
+  .mobile-menu-toggler {
+    display: block;
+  }
+  .mobile-menu-toggler .mobile-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  .mobile-menu-toggler .menu-toggler:checked ~ .mobile-menu {
+    display: flex;
+  }
+
+  .m-dropdown-content a::before {
+    content: "\00BB";
+    margin-right: 10px;
+    color: rgb(150 150 150);
+  }
+
+  #slider {
+    height: 200px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
